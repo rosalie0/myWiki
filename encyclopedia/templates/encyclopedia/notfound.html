@@ -1,0 +1,10 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Entry not Found
+{% endblock %}
+
+{% block body %}
+    <h1> ERROR: Entry for '{{ name }}' does not exist</h1>
+    No entry was found for '{{ name }}'. Perhaps you'd like to <a href="{% url 'create' %}">create</a> one?
+{% endblock %}

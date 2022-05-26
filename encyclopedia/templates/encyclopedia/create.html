@@ -1,0 +1,35 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Create New Page
+{% endblock %}
+
+{% block body %}
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <h1>Create New Page</h1>
+
+    <form action="{% url 'create' %}" method="post" style="padding-right:200px;">
+        {% csrf_token %}
+        <label for="name">Entry name:</label>
+        <input type="text" name="name">
+        <br>
+
+        <label for="content">Entry contents:</label>
+        <br>
+
+        <textarea name="content" class="form-control form-text" rows="20">{{ markdownContent }}</textarea>
+
+        <div style="margin-top: 10px;">
+            <input class="btn btn-primary" type="submit" value="Save Changes">
+        </div>
+    </form>
+
+{% endblock %}

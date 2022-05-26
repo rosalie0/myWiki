@@ -1,0 +1,28 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Search Results for '{{ query }}'
+{% endblock %}
+
+{% block body %}
+    <h1>Search Results for '{{ query }}'</h1>
+    ERROR: No entry was found for '{{ query }}'.
+    <br>
+
+    {% if results %}
+        Did you mean:
+        <ul>
+            {% for result in results %}
+            <li>
+                <a href="{% url 'getEntry' result %}">
+                    {{ result }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        No relevant entries exist, either. <br>
+        Perhaps you'd like to <a href="{% url 'create' %}">create</a> one?
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Edit Entry
+{% endblock %}
+
+
+
+{% block body %}
+    <h1> Edit entry for '{{ name }}' </h1>
+    <p> This form uses the lightweight markup language
+        known as <a href="https://daringfireball.net/projects/markdown/">markdown.</a>
+    </p>
+
+    <form action="{% url 'edit' name %}" method="post" style="padding-right:200px;">
+        {% csrf_token %}
+        
+        <textarea name="content" class="form-control form-text" rows="20">{{ markdownContent }}</textarea>
+
+        <div style="margin-top: 10px;">
+            <input class="btn btn-primary" type="submit" value="Save Changes">
+        </div>
+    </form>
+
+{% endblock %}

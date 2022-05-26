@@ -1,0 +1,11 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    
+{% endblock %}
+
+{% block body %}
+    <h1> ERROR: An entry for '{{ name }}' already exists</h1>
+    Because an entry for '{{ name }}' already exists, you were unable to create a new one.
+    Please instead <a href="{% url 'edit' name %}"></a>edit the existing entry.</a>
+{% endblock %}
